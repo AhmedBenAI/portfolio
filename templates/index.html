@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Ahmed Bendimered — Applied AI & ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+
+<div id="cur"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">AHMED<em>.AI</em></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#papers">Papers</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Available for opportunities</div>
+    <h1 class="hero-name">AHMED<span>BENDIMERED</span></h1>
+    <div class="hero-roles">
+      <div class="hero-role hot">AI Engineer · MSc Distinction</div>
+      <div class="hero-role hot">Computer Vision · Drone Forensics · RAG</div>
+      <div class="hero-role hot">Full-Stack · Angular · Flask · Django</div>
+      <div class="hero-role">Liverpool, UK · Remote Ready · Trilingual</div>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-fill">View Projects</a>
+      <a href="https://github.com/AhmedBenAI" target="_blank" class="btn btn-out">GitHub ↗</a>
+      <button class="btn btn-out" onclick="openJD()">Match My JD ↗</button>
+    </div>
+  </div>
+  <div class="hero-right reveal">
+    <div class="hstat"><div class="hstat-ghost">★</div><div class="hstat-n">★</div><div class="hstat-l">MSc Distinction</div></div>
+    <div class="hstat"><div class="hstat-ghost">3</div><div class="hstat-n">3</div><div class="hstat-l">Degrees</div></div>
+    <div class="hstat"><div class="hstat-ghost">AI</div><div class="hstat-n">7+</div><div class="hstat-l">AI Projects</div></div>
+    <div class="hstat"><div class="hstat-ghost">3</div><div class="hstat-n">3</div><div class="hstat-l">Languages</div></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-inner">
+    <span>Computer Vision</span><span class="sep">✦</span><span>RAG Systems</span><span class="sep">✦</span><span>TensorFlow 2</span><span class="sep">✦</span><span>PyTorch</span><span class="sep">✦</span><span>RAPIDS cuML</span><span class="sep">✦</span><span>Flask · Django</span><span class="sep">✦</span><span>Docker</span><span class="sep">✦</span><span>Keycloak</span><span class="sep">✦</span><span>Apache Superset</span><span class="sep">✦</span><span>CUDA GPU ML</span><span class="sep">✦</span><span>Angular</span><span class="sep">✦</span>
+    <span>Computer Vision</span><span class="sep">✦</span><span>RAG Systems</span><span class="sep">✦</span><span>TensorFlow 2</span><span class="sep">✦</span><span>PyTorch</span><span class="sep">✦</span><span>RAPIDS cuML</span><span class="sep">✦</span><span>Flask · Django</span><span class="sep">✦</span><span>Docker</span><span class="sep">✦</span><span>Keycloak</span><span class="sep">✦</span><span>Apache Superset</span><span class="sep">✦</span><span>CUDA GPU ML</span><span class="sep">✦</span><span>Angular</span><span class="sep">✦</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-hd reveal"><div class="sec-num">01</div><h2 class="sec-title">About <em>Me</em></h2></div>
+  <div class="about-grid">
+    <div class="about-body reveal">
+      <p>I'm a <strong>Full-Stack & AI Systems Engineer</strong> with three degrees and a track record of shipping complex, production-grade systems — from complete ERP platforms to drone computer vision and client-facing enterprise software.</p>
+      <p>At <strong>Hexalogy</strong> I developed Angular frontends for clients, led DevOps on Linux/Proxmox with Portainer, Keycloak, and Nginx Proxy Manager, and co-built a resource capacity and scheduling optimisation system for a confidential client.</p>
+      <p>I also built a complete <strong>ERP system</strong> from scratch using <strong>WinDev</strong> for a confidential client — covering the full business cycle. My AI research spans <strong>adaptive dashboard generation</strong> (USTOMB MSc) and <strong>drone computer vision</strong> (LJMU MSc). Based in <strong>Liverpool, UK</strong> — open to remote or relocation.</p>
+      <div class="about-links">
+        <a href="https://github.com/AhmedBenAI" target="_blank" class="alink"><span class="alink-icon">🐙</span>github.com/AhmedBenAI</a>
+        <a href="https://linkedin.com/in/bendimered-ahmed-el-hadi" target="_blank" class="alink"><span class="alink-icon">💼</span>linkedin.com/in/bendimered-ahmed-el-hadi</a>
+        <a href="mailto:totti312002@gmail.com" class="alink"><span class="alink-icon">📧</span>totti312002@gmail.com</a>
+      </div>
+    </div>
+    <div class="reveal" style="display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);">
+      <div style="background:var(--card);padding:1.5rem;border-bottom:1px solid var(--border);">
+        <div style="font-family:var(--M);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:.5rem;">// tagline</div>
+        <div style="font-family:var(--S);font-weight:700;font-size:clamp(14px,1.3vw,17px);color:var(--white);line-height:1.4;">"Combining academic AI research with practical engineering to build scalable intelligent solutions."</div>
+      </div>
+      <div style="background:var(--card);padding:1.5rem;border-bottom:1px solid var(--border);">
+        <div style="font-family:var(--M);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:.7rem;">// degrees</div>
+        <div style="display:flex;flex-direction:column;gap:.5rem;">
+          <div style="font-family:var(--M);font-size:.68rem;color:#888;">🎓 MSc AI (Applied ML) · LJMU UK · <span style="color:var(--orange)">Distinction</span></div>
+          <div style="font-family:var(--M);font-size:.68rem;color:#888;">🎓 MSc AI · USTOMB Oran Algeria · 2024</div>
+          <div style="font-family:var(--M);font-size:.68rem;color:#888;">🎓 BSc Computer Systems · USTOMB · 2022</div>
+        </div>
+      </div>
+      <div style="background:var(--card);padding:1.5rem;">
+        <div style="font-family:var(--M);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:.5rem;">// status</div>
+        <div style="font-family:var(--M);font-size:.72rem;color:#22c55e;">● Open to work · Remote / Relocation</div>
+      </div>
+      <div style="background:var(--card);padding:1.5rem;border-top:1px solid var(--border);">
+        <div style="font-family:var(--M);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:.7rem;">// languages</div>
+        <div style="display:flex;flex-direction:column;gap:.45rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="font-family:var(--M);font-size:.68rem;color:#888;">🇩🇿 Arabic</div>
+            <div style="font-family:var(--M);font-size:.62rem;color:var(--orange);background:rgba(255,69,0,.1);padding:1px 7px;">Native</div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="font-family:var(--M);font-size:.68rem;color:#888;">🇬🇧 English</div>
+            <div style="font-family:var(--M);font-size:.62rem;color:var(--orange);background:rgba(255,69,0,.1);padding:1px 7px;">C1 · IELTS Academic & General</div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="font-family:var(--M);font-size:.68rem;color:#888;">🇫🇷 French</div>
+            <div style="font-family:var(--M);font-size:.62rem;color:var(--orange);background:rgba(255,69,0,.1);padding:1px 7px;">C1 · CCF</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-hd reveal"><div class="sec-num">02</div><h2 class="sec-title">Skills & <em>Stack</em></h2></div>
+  <div class="skills-layout">
+    <div class="reveal">
+      <div style="font-family:var(--M);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;">// proficiency</div>
+      <div class="sk-list">
+        <div class="sk-row"><span class="sk-nm">Python</span><div class="sk-track"><div class="sk-fill" data-p="95"></div></div><span class="sk-pct">95%</span></div>
+        <div class="sk-row"><span class="sk-nm">Machine Learning</span><div class="sk-track"><div class="sk-fill" data-p="92"></div></div><span class="sk-pct">92%</span></div>
+        <div class="sk-row"><span class="sk-nm">Computer Vision</span><div class="sk-track"><div class="sk-fill" data-p="88"></div></div><span class="sk-pct">88%</span></div>
+        <div class="sk-row"><span class="sk-nm">RAG / LLM</span><div class="sk-track"><div class="sk-fill" data-p="85"></div></div><span class="sk-pct">85%</span></div>
+        <div class="sk-row"><span class="sk-nm">TensorFlow 2</span><div class="sk-track"><div class="sk-fill" data-p="85"></div></div><span class="sk-pct">85%</span></div>
+        <div class="sk-row"><span class="sk-nm">PyTorch</span><div class="sk-track"><div class="sk-fill" data-p="80"></div></div><span class="sk-pct">80%</span></div>
+        <div class="sk-row"><span class="sk-nm">Backend / APIs</span><div class="sk-track"><div class="sk-fill" data-p="88"></div></div><span class="sk-pct">88%</span></div>
+        <div class="sk-row"><span class="sk-nm">Docker / DevOps</span><div class="sk-track"><div class="sk-fill" data-p="80"></div></div><span class="sk-pct">80%</span></div>
+        <div class="sk-row"><span class="sk-nm">CUDA / GPU ML</span><div class="sk-track"><div class="sk-fill" data-p="75"></div></div><span class="sk-pct">75%</span></div>
+        <div class="sk-row"><span class="sk-nm">TypeScript / JS</span><div class="sk-track"><div class="sk-fill" data-p="72"></div></div><span class="sk-pct">72%</span></div>
+        <div class="sk-row"><span class="sk-nm">Data Analytics</span><div class="sk-track"><div class="sk-fill" data-p="82"></div></div><span class="sk-pct">82%</span></div>
+        <div class="sk-row"><span class="sk-nm">Security / RBAC</span><div class="sk-track"><div class="sk-fill" data-p="70"></div></div><span class="sk-pct">70%</span></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="chip-section">
+        <div class="chip-label">ML / AI Frameworks</div>
+        <div class="chips">
+          <span class="chip hl">TensorFlow 2</span><span class="chip hl">PyTorch</span><span class="chip hl">RAPIDS cuML</span>
+          <span class="chip hl">HuggingFace</span><span class="chip hl">Scikit-learn</span><span class="chip">BERT</span><span class="chip">Keras</span>
+        </div>
+      </div>
+      <div class="chip-section">
+        <div class="chip-label">Backend & APIs</div>
+        <div class="chips">
+          <span class="chip hl">Flask</span><span class="chip hl">Django</span><span class="chip hl">FastAPI</span>
+          <span class="chip">Flask-AppBuilder</span><span class="chip">Django REST</span>
+        </div>
+      </div>
+      <div class="chip-section">
+        <div class="chip-label">Infrastructure</div>
+        <div class="chips">
+          <span class="chip hl">Docker</span><span class="chip hl">Keycloak</span><span class="chip hl">Apache Superset</span>
+          <span class="chip">Proxmox</span><span class="chip">Portainer</span><span class="chip">Linux</span><span class="chip">Git</span>
+        </div>
+      </div>
+      <div class="chip-section">
+        <div class="chip-label">Languages</div>
+        <div class="chips">
+          <span class="chip hl">Python</span><span class="chip hl">JavaScript</span>
+          <span class="chip">SQL</span><span class="chip">WLanguage</span><span class="chip">CUDA</span>
+        </div>
+      </div>
+      <div class="chip-section">
+        <div class="chip-label">Databases</div>
+        <div class="chips">
+          <span class="chip">MySQL</span><span class="chip">MongoDB</span>
+          <span class="chip">HFSQL</span><span class="chip">Data Modelling</span>
+        </div>
+      </div>
+      <div class="chip-section">
+        <div class="chip-label">Data & Visualisation</div>
+        <div class="chips">
+          <span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Plotly</span>
+          <span class="chip">Seaborn</span><span class="chip">Matplotlib</span>
+        </div>
+      </div>
+      <div class="chip-section">
+        <div class="chip-label">Frontend</div>
+        <div class="chips"><span class="chip">Angular</span><span class="chip">HTML</span><span class="chip">CSS/SCSS</span></div>
+      </div>
+      <div class="chip-section">
+        <div class="chip-label">Spoken Languages</div>
+        <div class="chips">
+          <span class="chip hl">Arabic — Native</span>
+          <span class="chip hl">English — C1 (IELTS)</span>
+          <span class="chip hl">French — C1 (CCF)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-hd reveal"><div class="sec-num">03</div><h2 class="sec-title">GitHub <em>Projects</em></h2></div>
+  <div class="proj-controls reveal">
+    <span class="proj-label" id="proj-label">Hover cards to flip · select to customise</span>
+    <div class="proj-btns">
+      <button class="pbtn" id="pb-sel" onclick="toggleSel()">Select</button>
+      <button class="pbtn" id="pb-apply" onclick="applySel()" style="display:none">Apply</button>
+    </div>
+  </div>
+  <div class="flip-grid reveal" id="static-grid">
+    <!-- Dari Real Estate -->
+    <div class="fc">
+      <div class="fc-in">
+        <div class="fc-f">
+          <div class="fc-bar" style="background:#DD0031"></div>
+          <div class="fc-cat">Full-Stack · In Progress</div>
+          <div class="fc-name">Dari — Real Estate Platform</div>
+          <div class="fc-desc-f">Full-stack property platform for the Algerian market — agency & private listings, search, and property management.</div>
+          <div class="fc-meta"><span>Angular · Python · REST API</span></div>
+        </div>
+        <div class="fc-b">
+          <div class="fc-bt">Dari Real Estate Platform</div>
+          <div class="fc-bd">Centralised property discovery for Algeria. Listing workflows, agency account management, search and backend APIs for scalability. Personal project demonstrating SaaS architecture skills.</div>
+          <div class="fc-btags"><span class="fc-btag">Angular</span><span class="fc-btag">Python</span><span class="fc-btag">REST API</span><span class="fc-btag">Full-Stack</span></div>
+          <a href="https://github.com/AhmedBenAI/dari-web" target="_blank" class="fc-blink">Frontend ↗ &nbsp;|&nbsp; <a href="https://github.com/AhmedBenAI/dari-api" target="_blank" style="color:var(--orange);text-decoration:none;">Backend ↗</a></a>
+        </div>
+      </div>
+    </div>
+    <!-- RAG Knowledge API -->
+    <div class="fc">
+      <div class="fc-in">
+        <div class="fc-f">
+          <div class="fc-bar" style="background:#3572A5"></div>
+          <div class="fc-cat">AI · RAG · Backend</div>
+          <div class="fc-name">RAG Knowledge API</div>
+          <div class="fc-desc-f">Retrieval-Augmented Generation API — context-aware intelligent responses via knowledge retrieval + language model integration.</div>
+          <div class="fc-meta"><span>Python · RAG · NLP</span></div>
+        </div>
+        <div class="fc-b">
+          <div class="fc-bt">RAG Knowledge API</div>
+          <div class="fc-bd">Backend API combining knowledge retrieval with LLM workflows. Retrieves relevant context and generates enhanced responses through REST endpoints. Demonstrates practical RAG system design.</div>
+          <div class="fc-btags"><span class="fc-btag">Python</span><span class="fc-btag">RAG</span><span class="fc-btag">NLP</span><span class="fc-btag">API</span></div>
+          <a href="https://github.com/AhmedBenAI/rag-knowledge-api" target="_blank" class="fc-blink">View on GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+    <!-- TriageAI -->
+    <div class="fc">
+      <div class="fc-in">
+        <div class="fc-f">
+          <div class="fc-bar" style="background:#ff4500"></div>
+          <div class="fc-cat">AI Backend · Healthcare</div>
+          <div class="fc-name">TriageAI Backend</div>
+          <div class="fc-desc-f">AI-powered triage support backend — processes healthcare inputs and supports clinical decision-making through intelligent APIs.</div>
+          <div class="fc-meta"><span>Python · AI Integration</span></div>
+        </div>
+        <div class="fc-b">
+          <div class="fc-bt">TriageAI Backend</div>
+          <div class="fc-bd">Backend infrastructure for an AI triage system. APIs and service layers managing data flow between AI components and application interfaces. Practical AI backend integration for healthcare decision support.</div>
+          <div class="fc-btags"><span class="fc-btag">Python</span><span class="fc-btag">AI Backend</span><span class="fc-btag">Healthcare</span><span class="fc-btag">API</span></div>
+          <a href="https://github.com/AhmedBenAI/triageai-backend" target="_blank" class="fc-blink">View on GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+    <!-- Pressure Ulcer QA -->
+    <div class="fc">
+      <div class="fc-in">
+        <div class="fc-f">
+          <div class="fc-bar" style="background:#DA5B0B"></div>
+          <div class="fc-cat">NLP · RAG · Academic</div>
+          <div class="fc-name">Pressure Ulcer QA — BERT + RAG</div>
+          <div class="fc-desc-f">Domain-specific QA system using BERT and RAG for healthcare. Contextually relevant answers in the clinical wound-care domain.</div>
+          <div class="fc-meta"><span>Python · BERT · NLP</span></div>
+        </div>
+        <div class="fc-b">
+          <div class="fc-bt">Pressure Ulcer QA — BERT + RAG</div>
+          <div class="fc-bd">Intelligent QA combining transformer-based NLP with retrieval-augmented generation. Provides contextually relevant clinical answers for the healthcare domain. Academic research project with published output.</div>
+          <div class="fc-btags"><span class="fc-btag">BERT</span><span class="fc-btag">RAG</span><span class="fc-btag">NLP</span><span class="fc-btag">Healthcare</span></div>
+          <a href="https://github.com/AhmedBenAI/pressure-ulcer-qa-bert-rag" target="_blank" class="fc-blink">View on GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+    <!-- Wildlife Detection -->
+    <div class="fc">
+      <div class="fc-in">
+        <div class="fc-f">
+          <div class="fc-bar" style="background:#FF6F00"></div>
+          <div class="fc-cat">Computer Vision · TF2</div>
+          <div class="fc-name">Wildlife Object Detection</div>
+          <div class="fc-desc-f">End-to-end wildlife detection with TensorFlow 2 — model training pipeline plus production API deployment layer.</div>
+          <div class="fc-meta"><span>TensorFlow · Python · CV</span></div>
+        </div>
+        <div class="fc-b">
+          <div class="fc-bt">Wildlife Object Detection System</div>
+          <div class="fc-bd">Full CV pipeline: TF2 model training, automated animal detection in image datasets, and separate API deployment layer. Demonstrates computer vision development and ML deployment skills end-to-end.</div>
+          <div class="fc-btags"><span class="fc-btag">TensorFlow</span><span class="fc-btag">Computer Vision</span><span class="fc-btag">API</span><span class="fc-btag">Python</span></div>
+          <a href="https://github.com/AhmedBenAI/wildlife-object-detection-tf2" target="_blank" class="fc-blink">Model ↗ &nbsp;|&nbsp; <a href="https://github.com/AhmedBenAI/wildlife-object-detection-api" target="_blank" style="color:var(--orange);text-decoration:none;">API ↗</a></a>
+        </div>
+      </div>
+    </div>
+    <!-- HIGGS RAPIDS -->
+    <div class="fc">
+      <div class="fc-in">
+        <div class="fc-f">
+          <div class="fc-bar" style="background:#76b900"></div>
+          <div class="fc-cat">GPU ML · RAPIDS</div>
+          <div class="fc-name">HIGGS Rapid ML Pipeline</div>
+          <div class="fc-desc-f">High-performance ML pipeline for large-scale HIGGS dataset analysis using RAPIDS — efficient preprocessing, training, and evaluation.</div>
+          <div class="fc-meta"><span>Python · RAPIDS · GPU</span></div>
+        </div>
+        <div class="fc-b">
+          <div class="fc-bt">HIGGS Rapid ML Pipeline</div>
+          <div class="fc-bd">Scalable ML pipeline for the HIGGS boson dataset. Focuses on efficient preprocessing, model training, and evaluation workflows. Demonstrates GPU-accelerated ML experimentation and pipeline optimisation at scale.</div>
+          <div class="fc-btags"><span class="fc-btag">RAPIDS</span><span class="fc-btag">GPU</span><span class="fc-btag">ML Pipeline</span><span class="fc-btag">Python</span></div>
+          <a href="https://github.com/AhmedBenAI/higgs-rapids-ml" target="_blank" class="fc-blink">View on GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:1.2rem;text-align:center;" class="reveal">
+    <a href="https://github.com/AhmedBenAI" target="_blank" class="btn btn-out">View All on GitHub ↗</a>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-hd reveal"><div class="sec-num">04</div><h2 class="sec-title">Work <em>Experience</em></h2></div>
+  <div class="exp-grid">
+    <div class="tl reveal">
+      <div class="tl-i">
+        <div class="tl-d">2023 — 2024</div>
+        <div class="tl-t">Software Engineer — Frontend & DevOps</div>
+        <div class="tl-s">Hexalogy</div>
+        <div class="tl-p">Contributed to the full delivery lifecycle of client software — from requirement gathering and business analysis through to frontend, backend, deployment, and optimisation. Built web interfaces in Angular and SCSS integrated with Flask and Django backends. Managed production infrastructure using Proxmox VMs, Portainer, Keycloak SSO, and Nginx. Designed ML-assisted scheduling and route optimisation algorithms to improve personnel allocation efficiency.</div>
+        <div class="tl-tags"><span class="tl-tag">Angular</span><span class="tl-tag">Flask</span><span class="tl-tag">Django</span><span class="tl-tag">Keycloak</span><span class="tl-tag">Proxmox</span><span class="tl-tag">Portainer</span><span class="tl-tag">Linux</span><span class="tl-tag">ML Optimisation</span></div>
+      </div>
+    </div>
+    <div class="tl reveal">
+      <div class="tl-i">
+        <div class="tl-d">2023 — 2024</div>
+        <div class="tl-t">AI Systems Developer — Resource Optimisation</div>
+        <div class="tl-s">Hexalogy · Confidential Client</div>
+        <div class="tl-p">Designed optimisation algorithms including ML-assisted scheduling and route optimisation to improve personnel allocation and operational performance for clients. Supported end-to-end delivery of scalable software systems, working directly with clients to align technical solutions with operational goals.</div>
+        <div class="tl-tags"><span class="tl-tag">ML Optimisation</span><span class="tl-tag">Route Planning</span><span class="tl-tag">Scheduling Algorithms</span><span class="tl-tag">Full-Stack</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAPERS -->
+<section id="papers">
+  <div class="sec-hd reveal"><div class="sec-num">05</div><h2 class="sec-title">Research <em>Papers</em></h2></div>
+  <div class="papers reveal">
+    <div class="paper">
+      <div><div class="p-yr">2025</div><span class="p-stat">LJMU</span></div>
+      <div>
+        <div class="p-t">Forensic Drone Analysis System</div>
+        <div class="p-v">MSc Dissertation · Liverpool John Moores University · <span style="color:var(--orange)">Distinction</span></div>
+        <div class="p-abs">AI-driven forensic drone system supporting autonomous aerial data acquisition and forensic analysis workflows. Applied ML and intelligent processing to enhance automated evidence collection and situational analysis. Combines research rigour with practical engineering implementation for aerial forensic applications.</div>
+        <a href="https://github.com/AhmedBenAI" target="_blank" class="p-link">GitHub (paper in repo) ↗</a>
+      </div>
+      <div></div>
+    </div>
+    <div class="paper">
+      <div><div class="p-yr">2024</div><span class="p-stat">Published</span></div>
+      <div>
+        <div class="p-t">Intelligent Adaptive Dashboard System</div>
+        <div class="p-v">MSc Research Project · USTOMB Oran, Algeria</div>
+        <div class="p-abs">AI-powered dashboard platform that dynamically adapts data visualisations and prioritises relevant information automatically based on incoming data patterns. Removes the need for manual dashboard configuration by applying relevance-based intelligent decision logic — personalising analytical insights for each user on every login.</div>
+        <a href="https://github.com/AhmedBenAI" target="_blank" class="p-link">GitHub (paper in repo) ↗</a>
+      </div>
+      <div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="sec-hd reveal"><div class="sec-num">06</div><h2 class="sec-title">Education <em>& Degrees</em></h2></div>
+  <div class="edu-grid reveal">
+    <div class="edu-card">
+      <div class="edu-ghost">MSc</div>
+      <div class="edu-p">2024 — 2025</div>
+      <div class="edu-d">MSc AI — Applied Machine Learning <span style="color:var(--orange);font-size:.85em;">✦ Distinction</span></div>
+      <div class="edu-s">Liverpool John Moores University, UK · 2024–2025</div>
+      <div class="edu-desc">Focused on applied ML, practical AI engineering, and research-led intelligent systems. Dissertation: Forensic Drone Analysis System — AI-driven aerial data acquisition and forensic analysis workflows combining ML processing with practical engineering implementation.</div>
+      <div class="edu-mods"><span class="edu-mod">Forensic Drone CV</span><span class="edu-mod">NLP</span><span class="edu-mod">RAG</span><span class="edu-mod">ML Pipelines</span><span class="edu-mod">AI Integration</span></div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-ghost">MSc</div>
+      <div class="edu-p">2022 — 2024</div>
+      <div class="edu-d">MSc Artificial Intelligence</div>
+      <div class="edu-s">University of Science and Technology Oran · 2022–2024</div>
+      <div class="edu-desc">Strong theoretical and practical AI foundations: ML algorithms, mathematical modelling, intelligent agents, computer vision, and audio/image processing. Research project: Intelligent Adaptive Dashboard System — AI that dynamically selects and prioritises relevant visualisations per user with no manual configuration.</div>
+      <div class="edu-mods"><span class="edu-mod">Adaptive Dashboards</span><span class="edu-mod">Computer Vision</span><span class="edu-mod">Intelligent Agents</span><span class="edu-mod">ML Algorithms</span></div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-ghost">BSc</div>
+      <div class="edu-p">2019 — 2022</div>
+      <div class="edu-d">BSc Computer Systems</div>
+      <div class="edu-s">University of Science and Technology Oran · 2019–2022</div>
+      <div class="edu-desc">Web development, algorithms, databases, software architecture, and backend logic. Capstone: fully integrated ERP desktop application (WinDev) covering HR, payroll, stock, accounting, and order processing — deployed in an active manufacturing environment.</div>
+      <div class="edu-mods"><span class="edu-mod">Web Development</span><span class="edu-mod">Algorithms</span><span class="edu-mod">Databases</span><span class="edu-mod">ERP · WinDev</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div><div class="contact-hl reveal">LET'S<br/><em>Build</em><br/>TOGETHER</div></div>
+    <div class="contact-links reveal">
+      <a href="https://linkedin.com/in/bendimered-ahmed-el-hadi" target="_blank" class="cl"><span class="cl-icon">💼</span><span class="cl-label">LinkedIn</span><span class="cl-val">bendimered-ahmed-el-hadi</span></a>
+      <a href="https://github.com/AhmedBenAI" target="_blank" class="cl"><span class="cl-icon">🐙</span><span class="cl-label">GitHub</span><span class="cl-val">@AhmedBenAI</span></a>
+      <a href="mailto:totti312002@gmail.com" class="cl"><span class="cl-icon">📧</span><span class="cl-label">Email</span><span class="cl-val">totti312002@gmail.com</span></a>
+      <div class="cl"><span class="cl-icon">📍</span><span class="cl-label">Location</span><span class="cl-val">Liverpool, UK · Open to Remote / Relocation</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><span>Ahmed Bendimered</span> · Applied AI & ML Engineer · Liverpool UK</p>
+  <p style="color:var(--muted);">Built with HTML · <span>2025</span></p>
+</footer>
+
+<!-- JD MATCHER BUTTON -->
+<button id="jd-btn" onclick="openJD()">Match Job</button>
+
+<!-- JD MATCHER PANEL -->
+<div id="jd-panel">
+  <div class="jd-head">
+    <div class="jd-head-info">
+      <div class="jd-title">JD MATCHER</div>
+      <div class="jd-sub">// Recruiter match report · powered by Claude AI</div>
+    </div>
+    <button id="jd-close" onclick="closeJD()">✕</button>
+  </div>
+  <div class="jd-body" id="jd-body">
+    <div class="jd-instructions">
+      Paste a job description or upload a file. Get an AI-generated match report — score, why Ahmed fits, gaps to probe, and suggested interview questions.
+    </div>
+    <div class="jd-drop" id="jd-drop">
+      <div class="jd-drop-icon">📄</div>
+      <div class="jd-drop-label">Drop a file here</div>
+      <div class="jd-drop-sub">.txt or .pdf · or paste below</div>
+      <input type="file" id="jd-file-in" accept=".txt,.pdf"/>
+      <button class="btn btn-out" style="font-size:.62rem;padding:.4rem .9rem;margin-top:.3rem;" onclick="document.getElementById('jd-file-in').click()">Browse File</button>
+    </div>
+    <div class="jd-or">— or —</div>
+    <textarea class="jd-textarea" id="jd-text" placeholder="Paste job description here…"></textarea>
+    <button class="jd-analyze-btn" id="jd-go" onclick="analyzeJD()">Analyse Job Fit →</button>
+    <div id="jd-result"></div>
+  </div>
+</div>
+
+<!-- CHATBOT -->
+<button id="chat-btn" onclick="toggleChat()" title="Ask Ahmed's AI">💬</button>
+<div id="chatbot">
+  <div class="ch-head">
+    <div class="ch-hl">
+      <div class="ch-av">🤖</div>
+      <div><div class="ch-title">Ahmed's AI</div><div class="ch-sub">● Ask me anything</div></div>
+    </div>
+    <button id="chx" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="cmsgs" id="cmsgs">
+    <div class="cm b">Hi! Ask me about Ahmed's projects, skills, research, or experience.</div>
+  </div>
+  <div class="cchips">
+    <button class="cchip" onclick="useChip(this)">CV projects?</button>
+    <button class="cchip" onclick="useChip(this)">RAG research?</button>
+    <button class="cchip" onclick="useChip(this)">Tech stack?</button>
+    <button class="cchip" onclick="useChip(this)">How to contact?</button>
+  </div>
+  <div class="cinrow">
+    <input id="cin" type="text" placeholder="Ask anything…" onkeydown="if(event.key==='Enter')sendMsg()"/>
+    <button id="cgo" onclick="sendMsg()">→</button>
+  </div>
+</div>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>
