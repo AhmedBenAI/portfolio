@@ -59,6 +59,29 @@
   </div>
 </div>
 
+<!-- RECRUITER TOOLS -->
+<div class="rt-bar">
+  <div class="rt-label">// For Recruiters — try these first</div>
+  <div class="rt-cards">
+    <button class="rt-card" onclick="openJD()">
+      <div class="rt-card-top">
+        <span class="rt-card-icon">📋</span>
+        <span class="rt-card-title">Match My JD</span>
+      </div>
+      <div class="rt-card-desc">Paste any job description → AI match score, gaps, and interview questions in seconds</div>
+      <div class="rt-card-cta">Try it now →</div>
+    </button>
+    <button class="rt-card" onclick="toggleChat()">
+      <div class="rt-card-top">
+        <span class="rt-card-icon">🤖</span>
+        <span class="rt-card-title">Ask Ahmed's AI</span>
+      </div>
+      <div class="rt-card-desc">Ask anything about skills, projects, research, or experience — instant answers</div>
+      <div class="rt-card-cta">Ask now →</div>
+    </button>
+  </div>
+</div>
+
 <!-- ABOUT -->
 <section id="about">
   <div class="sec-hd reveal"><div class="sec-num">01</div><h2 class="sec-title">About <em>Me</em></h2></div>
@@ -195,11 +218,7 @@
 <section id="projects">
   <div class="sec-hd reveal"><div class="sec-num">03</div><h2 class="sec-title">GitHub <em>Projects</em></h2></div>
   <div class="proj-controls reveal">
-    <span class="proj-label" id="proj-label">Hover cards to flip · select to customise</span>
-    <div class="proj-btns">
-      <button class="pbtn" id="pb-sel" onclick="toggleSel()">Select</button>
-      <button class="pbtn" id="pb-apply" onclick="applySel()" style="display:none">Apply</button>
-    </div>
+    <span class="proj-label">Hover cards to flip</span>
   </div>
   <div class="flip-grid reveal" id="static-grid">
     <!-- Dari Real Estate -->
@@ -417,8 +436,17 @@
   <p style="color:var(--muted);">Built with HTML · <span>2025</span></p>
 </footer>
 
-<!-- JD MATCHER BUTTON -->
-<button id="jd-btn" onclick="openJD()">Match Job</button>
+<!-- FLOATING TOOLS -->
+<div id="float-tools">
+  <button id="jd-btn" onclick="openJD()">
+    <span class="jd-btn-icon">📋</span>
+    <span class="jd-btn-text">Match My JD</span>
+  </button>
+  <button id="chat-float-btn" onclick="toggleChat()" title="Ask Ahmed's AI">
+    <span>🤖</span>
+    <span class="chat-float-label">Ask AI</span>
+  </button>
+</div>
 
 <!-- JD MATCHER PANEL -->
 <div id="jd-panel">
@@ -448,14 +476,13 @@
 </div>
 
 <!-- CHATBOT -->
-<button id="chat-btn" onclick="toggleChat()" title="Ask Ahmed's AI">💬</button>
 <div id="chatbot">
   <div class="ch-head">
     <div class="ch-hl">
       <div class="ch-av">🤖</div>
       <div><div class="ch-title">Ahmed's AI</div><div class="ch-sub">● Ask me anything</div></div>
     </div>
-    <button id="chx" onclick="toggleChat()">✕</button>
+    <button id="chx" onclick="toggleChat()" title="Close">✕</button>
   </div>
   <div class="cmsgs" id="cmsgs">
     <div class="cm b">Hi! Ask me about Ahmed's projects, skills, research, or experience.</div>

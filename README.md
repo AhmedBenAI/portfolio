@@ -1,93 +1,31 @@
-# Ahmed Bendimered — Portfolio
+# Ahmed Bendimered — Portfolio (Frontend)
 
-Personal portfolio website with an AI-powered Job Description Matcher that uses Claude to evaluate fit for any role.
+Static portfolio site deployed on Vercel. Calls a separate backend API for the AI-powered JD Matcher.
 
-## Project Structure
+## Structure
 
 ```
 portfolio/
-├── server.py              # Flask backend + Claude API endpoint
-├── requirements.txt
-├── .env                   # API key (not committed)
-├── .env.example           # Template for .env
-├── .gitignore
 ├── templates/
-│   └── index.html         # Main portfolio page
-└── static/
-    ├── css/
-    │   └── style.css
-    └── js/
-        └── app.js
+│   └── index.html        ← main page
+├── static/
+│   ├── css/style.css
+│   └── js/app.js         ← set API_BASE here before deploying
+├── vercel.json
 ```
 
-## Setup
+## Deploying the frontend (Vercel)
 
-**1. Clone and install dependencies**
+1. Push this repo to GitHub
+2. Import into Vercel — it picks up `vercel.json` automatically
+3. No env vars needed for the frontend itself
 
-```bash
-pip install -r requirements.txt
+## Connecting to the backend
+
+Once your backend is deployed, open [static/js/app.js](static/js/app.js) and set:
+
+```js
+const API_BASE = 'https://your-backend.railway.app';
 ```
 
-**2. Add your Anthropic API key**
-
-```bash
-cp .env.example .env
-```
-
-Then edit `.env` and replace `your_api_key_here` with your real key from [console.anthropic.com](https://console.anthropic.com).
-
-**3. Run the server**
-
-```bash
-python server.py
-```
-
-Open [http://localhost:5000](http://localhost:5000) in your browser.
-
-## JD Matcher
-
-Click **Match Job** (bottom-right button) or **Match My JD ↗** in the hero section. Paste or upload a job description — Claude analyses it against Ahmed's profile and returns:
-
-- Match score (1–10)
-- Verdict and summary
-- Matching skills and experience
-- Gaps to probe at interview
-- Suggested interview questions
-
-## API
-
-### `POST /api/analyze-jd`
-
-Request:
-```json
-{ "job_description": "..." }
-```
-
-Response:
-```json
-{
-  "score": 8.5,
-  "verdict": "Strong Match",
-  "vcolor": "#4ade80",
-  "summary": "...",
-  "matches": ["..."],
-  "gaps": ["..."],
-  "whyHire": ["..."],
-  "interviewQs": ["..."]
-}
-```
-
-### `GET /api/health`
-
-Returns `{ "status": "ok" }`.
-
-## Deployment
-
-The server is a standard Flask app — it can be deployed to any platform that supports Python:
-
-- **Railway**: connect your repo, set `ANTHROPIC_API_KEY` in environment variables, done.
-- **Render**: same — free tier available, add the env var in the dashboard.
-- **Vercel**: requires a `vercel.json` config (ask for help if needed).
-- **Fly.io**: `fly launch` then `fly secrets set ANTHROPIC_API_KEY=...`
-
-Set `FLASK_DEBUG=false` and `PORT` to whatever the platform expects in production.
+Then push — Vercel redeploys automatically.

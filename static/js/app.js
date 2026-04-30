@@ -1,5 +1,12 @@
 'use strict';
 
+/* ─── CONFIG ──────────────────────────────────────────────────────
+   Set API_BASE to your deployed backend URL before pushing to Vercel.
+   Leave as empty string when running locally with server.py.
+   Example: const API_BASE = 'https://portfolio-api.railway.app';
+─────────────────────────────────────────────────────────────────── */
+const API_BASE = '';
+
 /* ════════════════════════════════
    CURSOR
 ════════════════════════════════ */
@@ -8,7 +15,7 @@ document.addEventListener('mousemove', e => {
   curEl.style.left = e.clientX + 'px';
   curEl.style.top = e.clientY + 'px';
 });
-document.querySelectorAll('a,button,.fc,.hstat,.paper,.edu-card,.alink').forEach(el => {
+document.querySelectorAll('a,button,.fc,.hstat,.paper,.edu-card,.alink,.rt-card').forEach(el => {
   el.addEventListener('mouseenter', () => curEl.classList.add('big'));
   el.addEventListener('mouseleave', () => curEl.classList.remove('big'));
 });
@@ -24,94 +31,15 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
   ro.observe(el);
 });
 
+/* ─── Skill bars animate on scroll ─── */
 const skObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting)
       e.target.querySelectorAll('.sk-fill').forEach(b => { b.style.width = b.dataset.p + '%'; });
   });
-}, { threshold: .2 });
-document.querySelectorAll('#skills').forEach(s => skObs.observe(s));
-
-/* ════════════════════════════════
-   GITHUB REPOS
-════════════════════════════════ */
-const GHU = 'AhmedBenAI';
-let repos = [], sel = new Set(), selMode = false;
-const LC = { 'Python': '#3572A5', 'Jupyter Notebook': '#DA5B0B', 'TypeScript': '#2b7489', 'JavaScript': '#f1e05a', 'HTML': '#e34c26', null: '#555' };
-const LCat = { 'Python': 'ML / Python', 'Jupyter Notebook': 'Research', 'TypeScript': 'Full-Stack', 'JavaScript': 'JS', 'HTML': 'Web', null: 'Code' };
-
-async function fetchRepos() {
-  try {
-    const r = await fetch(`https://api.github.com/users/${GHU}/repos?per_page=100&sort=updated`);
-    if (!r.ok) throw 0;
-    const d = await r.json();
-    repos = d.filter(x => !x.fork && x.name !== GHU);
-    repos.forEach(x => sel.add(x.name));
-    renderRepos();
-  } catch {
-    document.getElementById('flip-grid') && (document.getElementById('flip-grid').innerHTML = `<div class="gh-load"><p style="color:#555">Could not reach GitHub · <a href="https://github.com/${GHU}" target="_blank" style="color:var(--orange)">View directly ↗</a></p></div>`);
-    document.getElementById('proj-label') && (document.getElementById('proj-label').textContent = 'GitHub unavailable');
-  }
-}
-
-function renderRepos() {
-  const g = document.getElementById('flip-grid'), l = document.getElementById('proj-label');
-  if (!g) return;
-  const list = repos.filter(x => sel.has(x.name)).slice(0, 6);
-  if (l) l.textContent = `${repos.length} repos · hover cards to flip`;
-  if (!list.length) { g.innerHTML = '<div class="gh-load"><p>No repos selected.</p></div>'; return; }
-  g.innerHTML = '';
-  list.forEach((repo, i) => {
-    const col = LC[repo.language] || '#555', cat = LCat[repo.language] || 'Code';
-    const d = document.createElement('div'); d.className = 'fc'; d.dataset.n = repo.name;
-    d.innerHTML = `<div class="fc-in">
-      <div class="fc-f">
-        <div class="fc-bar" style="background:${col}"></div>
-        <div class="fc-cat">${cat}</div>
-        <div class="fc-name">${repo.name.replace(/-/g, ' ')}</div>
-        <div class="fc-desc-f">${(repo.description || 'No description.').slice(0, 70)}${(repo.description || '').length > 70 ? '…' : ''}</div>
-        <div class="fc-meta"><span>⭐ ${repo.stargazers_count}</span><span>🍴 ${repo.forks_count}</span></div>
-      </div>
-      <div class="fc-b">
-        <div class="fc-bt">${repo.name.replace(/-/g, ' ')}</div>
-        <div class="fc-bd">${repo.description || 'No description.'}</div>
-        ${repo.topics && repo.topics.length ? '<div class="fc-btags">' + repo.topics.slice(0, 4).map(t => '<span class="fc-btag">' + t + '</span>').join('') + '</div>' : ''}
-        <a href="${repo.html_url}" target="_blank" class="fc-blink">View on GitHub ↗</a>
-      </div>
-    </div>`;
-    if (selMode) {
-      if (!sel.has(repo.name)) d.style.opacity = '.3';
-      d.addEventListener('click', () => {
-        if (sel.has(repo.name)) { sel.delete(repo.name); d.style.opacity = '.3'; }
-        else { sel.add(repo.name); d.style.opacity = '1'; }
-      });
-    }
-    g.appendChild(d);
-    d.style.opacity = '0'; d.style.transform = 'translateY(10px)';
-    d.style.transition = `opacity .3s ${i * .06}s,transform .3s ${i * .06}s`;
-    setTimeout(() => { d.style.opacity = selMode && !sel.has(repo.name) ? '.3' : '1'; d.style.transform = 'none'; }, 40);
-    d.addEventListener('mouseenter', () => curEl.classList.add('big'));
-    d.addEventListener('mouseleave', () => curEl.classList.remove('big'));
-  });
-}
-
-function toggleSel() {
-  selMode = !selMode;
-  const b = document.getElementById('pb-sel'), ab = document.getElementById('pb-apply');
-  b.textContent = selMode ? 'Cancel' : 'Select'; b.className = selMode ? 'pbtn on' : 'pbtn';
-  ab.style.display = selMode ? 'inline-block' : 'none';
-  renderRepos();
-}
-
-function applySel() {
-  selMode = false;
-  document.getElementById('pb-sel').textContent = 'Select';
-  document.getElementById('pb-sel').className = 'pbtn';
-  document.getElementById('pb-apply').style.display = 'none';
-  renderRepos();
-}
-
-fetchRepos();
+}, { threshold: .15 });
+const skillsSection = document.getElementById('skills');
+if (skillsSection) skObs.observe(skillsSection);
 
 /* ════════════════════════════════
    LOCAL CHATBOT
@@ -126,7 +54,7 @@ const KB = [
   { text: 'Projects include Forensic Drone Analysis System LJMU MSc Distinction Wildlife Object Detection TF2 RAG Knowledge API TriageAI Backend Pressure Ulcer QA BERT RAG HIGGS RAPIDS ML Pipeline Dari Real Estate Platform', tags: ['projects', 'github', 'drone', 'wildlife', 'rag'] },
   { text: 'Research papers include Forensic Drone Analysis System LJMU Distinction 2025 Intelligent Adaptive Dashboard USTOMB 2024 Pressure Ulcer QA BERT RAG ML Scheduling Hexalogy', tags: ['research', 'paper', 'thesis', 'dissertation'] },
   { text: 'Ahmed speaks Arabic natively English at C1 level IELTS Academic and General certified and French at C1 level CCF certified trilingual', tags: ['language', 'arabic', 'english', 'french', 'trilingual'] },
-  { text: 'Contact Ahmed on LinkedIn bendimered-ahmed-el-hadi or GitHub AhmedBenAI based in Liverpool UK open to remote or relocation', tags: ['contact', 'linkedin', 'github', 'email'] },
+  { text: 'Contact Ahmed on LinkedIn bendimered-ahmed-el-hadi or GitHub AhmedBenAI email totti312002@gmail.com based in Liverpool UK open to remote or relocation', tags: ['contact', 'linkedin', 'github', 'email'] },
 ];
 
 function tok(t) { return t.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(w => w.length > 1 && !STOP.has(w)); }
@@ -136,7 +64,6 @@ function buildIdx() {
   const docs = KB.map(c => { const terms = tok(c.text), tf = {}; terms.forEach(t => { tf[t] = (tf[t] || 0) + 1; }); Object.keys(tf).forEach(t => { df[t] = (df[t] || 0) + 1; }); return { c, terms, tf }; });
   return docs.map(({ c, terms, tf }) => { const vec = {}; Object.keys(tf).forEach(t => { const idf = Math.log((N + 1) / (df[t] + 1)) + 1; vec[t] = (tf[t] / terms.length) * idf; }); return { c, vec }; });
 }
-
 function cos(a, b) { let d = 0, nA = 0, nB = 0; new Set([...Object.keys(a), ...Object.keys(b)]).forEach(k => { const av = a[k] || 0, bv = b[k] || 0; d += av * bv; nA += av * av; nB += bv * bv; }); return (!nA || !nB) ? 0 : d / (Math.sqrt(nA) * Math.sqrt(nB)); }
 function qvec(q) { const ts = tok(q), tf = {}; ts.forEach(t => { tf[t] = (tf[t] || 0) + 1; }); const v = {}; Object.keys(tf).forEach(t => { v[t] = tf[t] / ts.length; }); return v; }
 
@@ -144,38 +71,51 @@ const IDX = buildIdx();
 
 function retrieve(q, k = 3) {
   const qv = qvec(q), qt = new Set(tok(q));
-  return IDX.map(({ c, vec }) => ({ c, s: cos(qv, vec) + c.tags.filter(tag => tag.split(' ').some(w => qt.has(w))).length * .08 }))
+  return IDX.map(({ c, vec }) => ({ c, s: cos(qv, vec) + c.tags.filter(tag => qt.has(tag)).length * .1 }))
     .sort((a, b) => b.s - a.s).slice(0, k).filter(x => x.s > .01).map(x => x.c);
 }
 
 function answer(q, chunks) {
   if (!chunks.length) return "I don't have info on that. Reach Ahmed on LinkedIn: linkedin.com/in/bendimered-ahmed-el-hadi or GitHub: github.com/AhmedBenAI";
-  if (/contact|email|reach|linkedin|github|link|connect/i.test(q)) return "Reach Ahmed on LinkedIn: linkedin.com/in/bendimered-ahmed-el-hadi or GitHub: github.com/AhmedBenAI — based in Liverpool UK, open to remote or relocation.";
+  if (/contact|email|reach|linkedin|github|link|connect/i.test(q)) return "Reach Ahmed on LinkedIn: linkedin.com/in/bendimered-ahmed-el-hadi · GitHub: github.com/AhmedBenAI · Email: totti312002@gmail.com — based in Liverpool UK, open to remote or relocation.";
   if (/degree|education|study|university|msc|bsc|ljmu|liverpool|qualif/i.test(q)) return "Ahmed has three degrees: MSc AI from Liverpool John Moores UK (2025, Applied ML, Distinction), MSc AI from USTOMB Oran Algeria (2024), and BSc Computer Systems from USTOMB (2022).";
   if (/skill|know|language|framework|tech|stack|tool|python|pytorch|tensor|docker|flask/i.test(q)) return "Core stack: Python, TensorFlow 2, PyTorch, RAPIDS cuML, CUDA — plus Flask/Django/FastAPI for APIs, Docker for deployment, Keycloak for security, and Apache Superset for dashboards.";
-  if (/vision|cv|detect|object|image|wildlife|drone|aerial|forensic/i.test(q)) return "Ahmed's LJMU MSc (Distinction) is on a Forensic Drone Analysis System — AI-driven aerial data acquisition and forensic analysis. He also built a Wildlife Object Detection System (TF2 + production API).";
+  if (/vision|cv|detect|object|image|wildlife|drone|aerial|forensic/i.test(q)) return "Ahmed's LJMU MSc (Distinction) is on a Forensic Drone Analysis System — AI-driven aerial data acquisition and forensic CV. He also built a Wildlife Object Detection System (TF2 + production API).";
   if (/rag|retrieval|bert|nlp|llm|qa|triage|knowledge/i.test(q)) return "Ahmed built a RAG Knowledge API, a TriageAI Backend (healthcare decision support), and a Pressure Ulcer QA system using BERT+RAG. Strong hands-on RAG and NLP experience.";
   if (/gpu|cuda|rapids|cuml|accelerat/i.test(q)) return "Ahmed benchmarked RAPIDS cuML (GPU) vs scikit-learn (CPU) on the HIGGS boson dataset, showing major speedups. He has CUDA programming experience for ML acceleration.";
-  if (/project|repo|github|built|open source|dari|triage|rag|wildlife|drone|dashboard/i.test(q)) return "Projects: Dari real estate platform (Angular+Python), RAG Knowledge API, TriageAI Backend, Pressure Ulcer QA (BERT+RAG), Wildlife Object Detection (TF2 + API), HIGGS RAPIDS ML pipeline, Forensic Drone MSc (LJMU Distinction), Adaptive Dashboard MSc (USTOMB). All at github.com/AhmedBenAI";
-  if (/experience|work|job|role|career|position|hexalogy/i.test(q)) return "Ahmed's professional experience is at Hexalogy (2023-2024) — building Angular frontends for clients, DevOps on Linux/Proxmox/Portainer/Keycloak/Nginx, and contributing to an AI capacity optimisation system for a confidential client.";
-  if (/research|paper|thesis|dissertation|publish/i.test(q)) return "Research outputs: 2025 LJMU dissertation (Forensic Drone CV, Distinction), 2024 USTOMB MSc (Adaptive Dashboards), Pressure Ulcer QA (BERT+RAG), ML Scheduling at Hexalogy.";
-  if (/arabic|french|english|ielts|ccf|bilingual|multilingual|speak/i.test(q)) return "Ahmed speaks Arabic natively, English at C1 level (IELTS Academic and General certified), and French at C1 level (CCF certified). Trilingual — strong asset for international teams.";
+  if (/project|repo|github|built|dari|triage|rag|wildlife|drone|dashboard/i.test(q)) return "Projects: Dari real estate platform (Angular+Python), RAG Knowledge API, TriageAI Backend, Pressure Ulcer QA (BERT+RAG), Wildlife Object Detection (TF2 + API), HIGGS RAPIDS ML pipeline, Forensic Drone MSc (LJMU Distinction). All at github.com/AhmedBenAI";
+  if (/experience|work|job|role|career|position|hexalogy/i.test(q)) return "Ahmed's professional experience is at Hexalogy (2023–2024) — building Angular frontends, DevOps on Linux/Proxmox/Portainer/Keycloak/Nginx, and co-building an AI capacity optimisation system for a confidential client.";
+  if (/research|paper|thesis|dissertation|publish/i.test(q)) return "Research: 2025 LJMU dissertation (Forensic Drone CV, Distinction), 2024 USTOMB MSc (Adaptive Dashboards), Pressure Ulcer QA (BERT+RAG), ML Scheduling at Hexalogy.";
+  if (/arabic|french|english|ielts|ccf|bilingual|multilingual|speak/i.test(q)) return "Ahmed speaks Arabic natively, English C1 (IELTS Academic and General certified), and French C1 (CCF certified). Trilingual — strong asset for international teams.";
   if (/where|location|remote|reloc|availab|hire/i.test(q)) return "Ahmed is in Liverpool UK, actively seeking AI Engineer / ML Engineer / Applied AI Engineer roles. Open to remote or relocation.";
-  if (/who|about|introduce|yourself|ahmed/i.test(q)) return "Ahmed Bendimered — AI Engineer and Full-Stack Developer. MSc AI with Distinction from Liverpool John Moores UK. Projects span forensic drone CV, RAG APIs, adaptive dashboards, triage AI, and real estate platforms. Trilingual: Arabic/English C1/French C1.";
+  if (/who|about|introduce|yourself|ahmed/i.test(q)) return "Ahmed Bendimered — AI Engineer and Full-Stack Developer. MSc AI with Distinction from Liverpool John Moores UK. Projects span forensic drone CV, RAG APIs, adaptive dashboards, triage AI, and real estate platforms. Trilingual: Arabic / English C1 / French C1.";
   const s = chunks[0].text.match(/[^.!?]+[.!?]+/g) || [chunks[0].text];
   return s.slice(0, 2).join(' ').trim();
 }
 
 let chatOpen = false;
-function toggleChat() { chatOpen = !chatOpen; document.getElementById('chatbot').classList.toggle('open', chatOpen); document.getElementById('chat-btn').textContent = chatOpen ? '✕' : '💬'; if (chatOpen) setTimeout(() => document.getElementById('cin').focus(), 240); }
+function toggleChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('chatbot').classList.toggle('open', chatOpen);
+  if (chatOpen) setTimeout(() => document.getElementById('cin').focus(), 240);
+}
 function useChip(b) { document.getElementById('cin').value = b.textContent; sendMsg(); }
 function sendMsg() {
   const inp = document.getElementById('cin'), q = inp.value.trim(); if (!q) return;
   inp.value = ''; addMsg(q, 'u'); const d = mkDots();
   setTimeout(() => { d.remove(); addMsg(answer(q, retrieve(q)), 'b'); }, 300 + Math.random() * 250);
 }
-function addMsg(t, cls) { const b = document.getElementById('cmsgs'), d = document.createElement('div'); d.className = 'cm ' + cls; d.innerHTML = t.replace(/\n/g, '<br>').replace(/(https?:\/\/[^\s<,]+)/g, '<a href="$1" target="_blank">$1</a>'); b.appendChild(d); b.scrollTop = b.scrollHeight; }
-function mkDots() { const b = document.getElementById('cmsgs'), d = document.createElement('div'); d.className = 'tdots'; d.innerHTML = '<span></span><span></span><span></span>'; b.appendChild(d); b.scrollTop = b.scrollHeight; return d; }
+function addMsg(t, cls) {
+  const b = document.getElementById('cmsgs'), d = document.createElement('div');
+  d.className = 'cm ' + cls;
+  d.innerHTML = t.replace(/\n/g, '<br>').replace(/(https?:\/\/[^\s<,]+)/g, '<a href="$1" target="_blank">$1</a>');
+  b.appendChild(d); b.scrollTop = b.scrollHeight;
+}
+function mkDots() {
+  const b = document.getElementById('cmsgs'), d = document.createElement('div');
+  d.className = 'tdots'; d.innerHTML = '<span></span><span></span><span></span>';
+  b.appendChild(d); b.scrollTop = b.scrollHeight; return d;
+}
 
 /* ════════════════════════════════
    JD MATCHER — powered by Claude
@@ -205,9 +145,8 @@ function handleFile(file) {
     reader.onload = () => {
       const bytes = new Uint8Array(reader.result);
       let text = '';
-      for (let i = 0; i < bytes.length - 1; i++) {
+      for (let i = 0; i < bytes.length - 1; i++)
         text += (bytes[i] >= 32 && bytes[i] < 127) ? String.fromCharCode(bytes[i]) : ' ';
-      }
       document.getElementById('jd-text').value = text.replace(/\s+/g, ' ').slice(0, 8000);
       dropEl.querySelector('.jd-drop-label').textContent = '✓ ' + file.name + ' loaded';
     };
@@ -232,7 +171,7 @@ async function analyzeJD() {
   res.innerHTML = '<div class="analyzing"><div class="spin"></div><p>Claude is reading the job requirements…</p></div>';
 
   try {
-    const response = await fetch('/api/analyze-jd', {
+    const response = await fetch(`${API_BASE}/api/analyze-jd`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ job_description: jdText }),

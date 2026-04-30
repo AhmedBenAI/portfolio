@@ -263,19 +263,66 @@ footer span{color:var(--orange);}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease;}
 .reveal.in{opacity:1;transform:none;}
 
-/* ─── JD MATCHER BUTTON ─── */
+/* ─── RECRUITER TOOLS BAR ─── */
+.rt-bar{
+  background:var(--card);border-bottom:1px solid var(--border);
+  padding:1.4rem 4vw;
+}
+.rt-label{
+  font-family:var(--M);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--orange);margin-bottom:.9rem;
+}
+.rt-cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);}
+.rt-card{
+  background:var(--surface);padding:1.4rem 1.6rem;
+  border:none;text-align:left;cursor:none;
+  display:flex;flex-direction:column;gap:.5rem;
+  transition:background .18s;position:relative;overflow:hidden;
+}
+.rt-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--orange);transform:scaleX(0);transform-origin:left;
+  transition:transform .25s;
+}
+.rt-card:hover{background:#1a1a1a;}
+.rt-card:hover::before{transform:scaleX(1);}
+.rt-card-top{display:flex;align-items:center;gap:.7rem;}
+.rt-card-icon{font-size:1.3rem;}
+.rt-card-title{font-family:var(--H);font-size:clamp(1.2rem,2vw,1.6rem);color:var(--white);letter-spacing:.03em;line-height:1;}
+.rt-card-desc{font-family:var(--M);font-size:.68rem;color:#777;line-height:1.6;}
+.rt-card-cta{font-family:var(--M);font-size:.65rem;letter-spacing:.1em;color:var(--orange);margin-top:.2rem;}
+@media(max-width:600px){.rt-cards{grid-template-columns:1fr;}}
+
+/* ─── FLOATING TOOLS ─── */
+#float-tools{
+  position:fixed;bottom:16px;right:16px;
+  display:flex;flex-direction:column;gap:8px;
+  z-index:700;
+}
 #jd-btn{
-  position:fixed;bottom:80px;right:16px;
-  font-family:var(--M);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+  font-family:var(--M);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;
   padding:.65rem 1rem;background:var(--orange);color:#000;border:none;
-  cursor:none;z-index:700;font-weight:500;
+  cursor:none;font-weight:500;
   box-shadow:4px 4px 0 rgba(0,0,0,.4);
-  transition:all .18s;
-  writing-mode:vertical-rl;transform:rotate(180deg);
-  border-radius:0;
+  transition:all .18s;border-radius:0;
+  display:flex;align-items:center;gap:.5rem;white-space:nowrap;
 }
 #jd-btn:hover{background:#fff;box-shadow:6px 6px 0 rgba(0,0,0,.3);}
-#jd-btn.open{background:#222;color:var(--orange);}
+#jd-btn.open{background:#1a1a1a;color:var(--orange);border:1px solid var(--orange);}
+.jd-btn-icon{font-size:.9rem;}
+#chat-float-btn{
+  display:flex;align-items:center;gap:.5rem;
+  padding:.55rem .9rem;
+  background:var(--card);border:1px solid var(--border);
+  color:var(--muted);font-size:.85rem;cursor:none;
+  transition:all .18s;box-shadow:0 4px 20px rgba(0,0,0,.4);
+  font-family:var(--M);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;
+  white-space:nowrap;border-radius:0;
+}
+#chat-float-btn:hover{background:var(--orange);border-color:var(--orange);color:#000;}
+.chat-float-label{color:inherit;}
+/* hide old standalone chat-btn if it exists */
+#chat-btn{display:none;}
 
 /* ─── JD MATCHER PANEL ─── */
 #jd-panel{
@@ -371,17 +418,8 @@ footer span{color:var(--orange);}
 .jd-error{font-family:var(--M);font-size:.68rem;color:#ef4444;padding:.8rem;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);line-height:1.6;}
 
 /* ─── CHATBOT ─── */
-#chat-btn{
-  position:fixed;bottom:16px;right:16px;
-  width:48px;height:48px;border-radius:50%;
-  background:var(--card);border:1px solid var(--border);
-  color:var(--muted);font-size:1.1rem;cursor:none;z-index:700;
-  display:flex;align-items:center;justify-content:center;
-  transition:all .18s;box-shadow:0 4px 20px rgba(0,0,0,.4);
-}
-#chat-btn:hover{background:var(--orange);border-color:var(--orange);color:#000;}
 #chatbot{
-  position:fixed;bottom:72px;right:16px;
+  position:fixed;bottom:16px;right:170px;
   width:clamp(270px,22vw,340px);max-height:clamp(300px,48vh,460px);
   background:var(--surface);border:1px solid var(--border);
   box-shadow:0 20px 60px rgba(0,0,0,.6);
