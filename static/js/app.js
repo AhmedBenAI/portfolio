@@ -1,6 +1,6 @@
 'use strict';
 
-const API_BASE = 'jd-matcher-api-production.up.railway.app';
+const API_BASE = 'https://jd-matcher-api-production.up.railway.app';
 
 /* ════════════════════════════════
    CURSOR
