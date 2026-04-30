@@ -1,11 +1,6 @@
 'use strict';
 
-/* ─── CONFIG ──────────────────────────────────────────────────────
-   Set API_BASE to your deployed backend URL before pushing to Vercel.
-   Leave as empty string when running locally with server.py.
-   Example: const API_BASE = 'https://portfolio-api.railway.app';
-─────────────────────────────────────────────────────────────────── */
-const API_BASE = '';
+const API_BASE = 'jd-matcher-api-production.up.railway.app';
 
 /* ════════════════════════════════
    CURSOR
