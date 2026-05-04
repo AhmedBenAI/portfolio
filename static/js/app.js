@@ -26,15 +26,6 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
   ro.observe(el);
 });
 
-/* ─── Skill bars animate on scroll ─── */
-const skObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting)
-      e.target.querySelectorAll('.sk-fill').forEach(b => { b.style.width = b.dataset.p + '%'; });
-  });
-}, { threshold: .15 });
-const skillsSection = document.getElementById('skills');
-if (skillsSection) skObs.observe(skillsSection);
 
 /* ════════════════════════════════
    LOCAL CHATBOT
@@ -113,15 +104,56 @@ function mkDots() {
 }
 
 /* ════════════════════════════════
+   MOBILE NAV
+════════════════════════════════ */
+let navOpen = false;
+function toggleNav() {
+  navOpen = !navOpen;
+  document.getElementById('mobile-nav').classList.toggle('open', navOpen);
+  document.getElementById('nav-burger').classList.toggle('open', navOpen);
+  document.body.style.overflow = navOpen ? 'hidden' : '';
+}
+function closeNav() {
+  navOpen = false;
+  document.getElementById('mobile-nav').classList.remove('open');
+  document.getElementById('nav-burger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ════════════════════════════════
+   TOUCH FLIP CARDS
+════════════════════════════════ */
+if ('ontouchstart' in window) {
+  document.querySelectorAll('.fc').forEach(fc => {
+    fc.addEventListener('click', () => fc.classList.toggle('tapped'));
+  });
+  const lbl = document.getElementById('proj-label');
+  if (lbl) lbl.textContent = 'Tap cards to flip';
+}
+
+/* ════════════════════════════════
+   KEYBOARD SHORTCUTS
+════════════════════════════════ */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeJD();
+    if (chatOpen) toggleChat();
+    if (navOpen) closeNav();
+  }
+});
+
+/* ════════════════════════════════
    JD MATCHER — powered by Claude
 ════════════════════════════════ */
 function openJD() {
   document.getElementById('jd-panel').classList.add('open');
   document.getElementById('jd-btn').classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
 function closeJD() {
   document.getElementById('jd-panel').classList.remove('open');
   document.getElementById('jd-btn').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 const dropEl = document.getElementById('jd-drop');
