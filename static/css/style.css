@@ -168,8 +168,13 @@ section{padding:6rem 4vw;}
 
 /* ─── PROJECTS ─── */
 #projects{background:var(--surface);}
-.proj-controls{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;}
+.proj-controls{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;}
 .proj-label{font-family:var(--M);font-size:.68rem;letter-spacing:.12em;color:var(--muted);}
+.proj-categories{display:flex;flex-direction:column;gap:1.6rem;}
+.proj-cat-hd{display:flex;align-items:center;justify-content:space-between;padding-bottom:.55rem;border-bottom:1px solid var(--border);}
+.proj-cat-label{font-family:var(--M);font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);}
+.proj-cat-count{font-family:var(--M);font-size:.58rem;color:var(--muted);letter-spacing:.08em;}
+.flip-grid--2{grid-template-columns:repeat(2,1fr);}
 .proj-btns{display:flex;gap:.4rem;}
 .pbtn{font-family:var(--M);font-size:.62rem;letter-spacing:.08em;padding:.28rem .7rem;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:none;transition:all .15s;}
 .pbtn:hover,.pbtn.on{background:var(--orange);border-color:var(--orange);color:#000;}
@@ -510,7 +515,7 @@ footer span{color:var(--orange);}
 
 @media(max-width:600px){
   section{padding:3.5rem 4vw;}
-  .flip-grid{grid-template-columns:1fr;}
+  .flip-grid,.flip-grid--2{grid-template-columns:1fr;}
   .fc{height:auto;min-height:130px;}
   .rt-cards{grid-template-columns:1fr;}
   .paper{grid-template-columns:1fr;}
